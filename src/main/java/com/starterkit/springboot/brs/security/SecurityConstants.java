@@ -1,7 +1,7 @@
-package com.starterkit.springboot.brs.security;
+package in.arakaki.hawk.security;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public interface SecurityConstants {
     String SECRET = "SecretKeyToGenJWTs";

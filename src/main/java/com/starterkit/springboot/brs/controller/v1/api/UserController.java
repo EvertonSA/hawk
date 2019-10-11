@@ -1,9 +1,9 @@
-package com.starterkit.springboot.brs.controller.v1.api;
+package in.arakaki.hawk.controller.v1.api;
 
-import com.starterkit.springboot.brs.controller.v1.request.UserSignupRequest;
-import com.starterkit.springboot.brs.dto.model.user.UserDto;
-import com.starterkit.springboot.brs.dto.response.Response;
-import com.starterkit.springboot.brs.service.UserService;
+import in.arakaki.hawk.controller.v1.request.UserSignupRequest;
+import in.arakaki.hawk.dto.model.user.UserDto;
+import in.arakaki.hawk.dto.response.Response;
+import in.arakaki.hawk.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @RestController
 @RequestMapping("/api/v1/user")
-@Api(value="brs-application", description="Operations pertaining to user management in the BRS application")
+@Api(value="Hawk-application", description="Operations pertaining to user management in the Hawk application")
 public class UserController {
     @Autowired
     private UserService userService;

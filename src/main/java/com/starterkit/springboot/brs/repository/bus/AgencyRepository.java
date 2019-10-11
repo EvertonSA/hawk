@@ -1,11 +1,11 @@
-package com.starterkit.springboot.brs.repository.bus;
+package in.arakaki.hawk.repository.bus;
 
-import com.starterkit.springboot.brs.model.bus.Agency;
-import com.starterkit.springboot.brs.model.user.User;
+import in.arakaki.hawk.model.bus.Agency;
+import in.arakaki.hawk.model.user.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public interface AgencyRepository extends MongoRepository<Agency, String> {
     Agency findByCode(String agencyCode);

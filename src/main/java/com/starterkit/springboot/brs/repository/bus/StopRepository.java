@@ -1,10 +1,10 @@
-package com.starterkit.springboot.brs.repository.bus;
+package in.arakaki.hawk.repository.bus;
 
-import com.starterkit.springboot.brs.model.bus.Stop;
+import in.arakaki.hawk.model.bus.Stop;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public interface StopRepository extends MongoRepository<Stop, String> {
     Stop findByCode(String code);

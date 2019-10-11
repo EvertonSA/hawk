@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.controller.v1.command;
+package in.arakaki.hawk.controller.v1.command;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Data
 @Accessors(chain = true)

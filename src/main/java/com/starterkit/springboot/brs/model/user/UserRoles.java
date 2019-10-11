@@ -1,7 +1,7 @@
-package com.starterkit.springboot.brs.model.user;
+package in.arakaki.hawk.model.user;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public enum UserRoles {
     ADMIN, PASSENGER

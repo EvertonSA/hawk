@@ -1,11 +1,11 @@
-package com.starterkit.springboot.brs.config;
+package in.arakaki.hawk.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Configuration
 public class PageConfig implements WebMvcConfigurer {

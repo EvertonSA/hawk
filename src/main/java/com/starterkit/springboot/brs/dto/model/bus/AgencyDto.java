@@ -1,8 +1,8 @@
-package com.starterkit.springboot.brs.dto.model.bus;
+package in.arakaki.hawk.dto.model.bus;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.starterkit.springboot.brs.dto.model.user.UserDto;
+import in.arakaki.hawk.dto.model.user.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 import java.util.Set;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Getter
 @Setter
@@ -26,7 +26,7 @@ public class AgencyDto {
 
     private UserDto owner;
 
-    private Set<BusDto> buses;
+    private Set<TweetsDto> buses;
 
     private String name;
 

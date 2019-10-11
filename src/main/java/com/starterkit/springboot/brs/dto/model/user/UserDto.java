@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.dto.model.user;
+package in.arakaki.hawk.dto.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 import java.util.Set;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Getter
 @Setter

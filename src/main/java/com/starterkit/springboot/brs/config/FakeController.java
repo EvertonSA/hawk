@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.config;
+package in.arakaki.hawk.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.Api;
@@ -18,11 +18,11 @@ import javax.validation.constraints.NotNull;
  * swagger documentation allowing users to get the authorisation token from the same interface
  * and use it for executing the secured API operations.
  *
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @RestController
 @RequestMapping("/api")
-@Api(value="brs-application", description="Operations pertaining to user login and logout in the BRS application")
+@Api(value="Hawk-application", description="Operations pertaining to user login and logout in the Hawk application")
 public class FakeController {
     @ApiOperation("Login")
     @PostMapping("/auth")

@@ -1,6 +1,6 @@
-package com.starterkit.springboot.brs.model.bus;
+package in.arakaki.hawk.model.bus;
 
-import com.starterkit.springboot.brs.model.user.User;
+import in.arakaki.hawk.model.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Set;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.config;
+package in.arakaki.hawk.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.NamingConventions;
@@ -18,11 +18,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.Arrays;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Configuration
 @EnableSwagger2
-public class BrsConfiguration {
+public class HawkConfiguration {
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -41,14 +41,14 @@ public class BrsConfiguration {
     }
 
     /**
-     * Group BRS contains operations related to reservations and agency mangement
+     * Group Hawk contains operations related to reservations and agency mangement
      */
     @Bean
-    public Docket swaggerBRSApi() {
+    public Docket swaggerHawkApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("BRS")
+                .groupName("Hawk")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.starterkit.springboot.brs.controller.v1.api"))
+                .apis(RequestHandlerSelectors.basePackage("in.arakaki.hawk.controller.v1.api"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
@@ -63,7 +63,7 @@ public class BrsConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("User")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.starterkit.springboot.brs.config"))
+                .apis(RequestHandlerSelectors.basePackage("in.arakaki.hawk.config"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
@@ -73,7 +73,7 @@ public class BrsConfiguration {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Bus Reservation System - REST APIs")
                 .description("Spring Boot starter kit application.").termsOfServiceUrl("")
-                .contact(new Contact("Arpit Khandelwal", "https://medium.com/the-resonant-web", "khandelwal.arpit@outlook.com"))
+                .contact(new Contact("Everton Arakaki", "https://medium.com/the-resonant-web", "khandelwal.arpit@outlook.com"))
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
                 .version("0.0.1")

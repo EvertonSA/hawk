@@ -1,15 +1,15 @@
-package com.starterkit.springboot.brs.controller.v1.api;
+package in.arakaki.hawk.controller.v1.api;
 
-import com.starterkit.springboot.brs.controller.v1.request.BookTicketRequest;
-import com.starterkit.springboot.brs.controller.v1.request.GetTripSchedulesRequest;
-import com.starterkit.springboot.brs.dto.model.bus.TicketDto;
-import com.starterkit.springboot.brs.dto.model.bus.TripDto;
-import com.starterkit.springboot.brs.dto.model.bus.TripScheduleDto;
-import com.starterkit.springboot.brs.dto.model.user.UserDto;
-import com.starterkit.springboot.brs.dto.response.Response;
-import com.starterkit.springboot.brs.service.BusReservationService;
-import com.starterkit.springboot.brs.service.UserService;
-import com.starterkit.springboot.brs.util.DateUtils;
+import in.arakaki.hawk.controller.v1.request.BookTicketRequest;
+import in.arakaki.hawk.controller.v1.request.GetTripSchedulesRequest;
+import in.arakaki.hawk.dto.model.bus.TicketDto;
+import in.arakaki.hawk.dto.model.bus.TripDto;
+import in.arakaki.hawk.dto.model.bus.TripScheduleDto;
+import in.arakaki.hawk.dto.model.user.UserDto;
+import in.arakaki.hawk.dto.response.Response;
+import in.arakaki.hawk.service.BusReservationService;
+import in.arakaki.hawk.service.UserService;
+import in.arakaki.hawk.util.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
@@ -23,12 +23,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @RestController
 @RequestMapping("/api/v1/reservation")
-@Api(value = "brs-application", description = "Operations pertaining to agency management and ticket issue in the BRS application")
-public class BusReservationController {
+@Api(value = "Hawk-application", description = "Operations pertaining to agency management and ticket issue in the Hawk application")
+public class Hawk {
     @Autowired
     private BusReservationService busReservationService;
 

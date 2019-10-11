@@ -1,7 +1,7 @@
-package com.starterkit.springboot.brs.security.api;
+package in.arakaki.hawk.security.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.starterkit.springboot.brs.model.user.User;
+import in.arakaki.hawk.model.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.starterkit.springboot.brs.security.SecurityConstants.*;
+import static in.arakaki.hawk.security.SecurityConstants.*;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public class ApiJWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;

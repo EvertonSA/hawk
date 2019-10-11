@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.dto.model.bus;
+package in.arakaki.hawk.dto.model.bus;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -9,7 +9,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Getter
 @Setter
@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
 @ToString
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BusDto {
+public class TweetsDto {
 
     private String code;
 

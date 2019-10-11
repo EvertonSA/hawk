@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs;
+package in.arakaki.hawk;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

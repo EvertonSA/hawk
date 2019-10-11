@@ -1,11 +1,11 @@
-package com.starterkit.springboot.brs.repository.bus;
+package in.arakaki.hawk.repository.bus;
 
-import com.starterkit.springboot.brs.model.bus.Agency;
-import com.starterkit.springboot.brs.model.bus.Bus;
+import in.arakaki.hawk.model.bus.Agency;
+import in.arakaki.hawk.model.bus.Bus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public interface BusRepository extends MongoRepository<Bus, String> {
     Bus findByCode(String busCode);

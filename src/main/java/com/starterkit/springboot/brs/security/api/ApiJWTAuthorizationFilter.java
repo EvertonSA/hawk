@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.security.api;
+package in.arakaki.hawk.security.api;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.starterkit.springboot.brs.security.SecurityConstants.*;
+import static in.arakaki.hawk.security.SecurityConstants.*;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public class ApiJWTAuthorizationFilter extends BasicAuthenticationFilter {
     public ApiJWTAuthorizationFilter(AuthenticationManager authManager) {

@@ -1,9 +1,9 @@
-package com.starterkit.springboot.brs.security;
+package in.arakaki.hawk.security;
 
-import com.starterkit.springboot.brs.security.api.ApiJWTAuthenticationFilter;
-import com.starterkit.springboot.brs.security.api.ApiJWTAuthorizationFilter;
-import com.starterkit.springboot.brs.security.form.CustomAuthenticationSuccessHandler;
-import com.starterkit.springboot.brs.security.form.CustomLogoutSuccessHandler;
+import in.arakaki.hawk.security.api.ApiJWTAuthenticationFilter;
+import in.arakaki.hawk.security.api.ApiJWTAuthorizationFilter;
+import in.arakaki.hawk.security.form.CustomAuthenticationSuccessHandler;
+import in.arakaki.hawk.security.form.CustomLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -19,7 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @EnableWebSecurity
 public class MultiHttpSecurityConfig {

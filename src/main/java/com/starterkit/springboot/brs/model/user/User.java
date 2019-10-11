@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.model.user;
+package in.arakaki.hawk.model.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Set;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Getter
 @Setter

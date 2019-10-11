@@ -1,31 +1,60 @@
-package com.starterkit.springboot.brs.service;
+package com.starterkit.springboot.brs;
 
-import com.starterkit.springboot.brs.dto.mapper.TicketMapper;
-import com.starterkit.springboot.brs.dto.mapper.TripMapper;
-import com.starterkit.springboot.brs.dto.mapper.TripScheduleMapper;
-import com.starterkit.springboot.brs.dto.model.bus.*;
-import com.starterkit.springboot.brs.dto.model.user.UserDto;
-import com.starterkit.springboot.brs.exception.BRSException;
-import com.starterkit.springboot.brs.exception.EntityType;
-import com.starterkit.springboot.brs.exception.ExceptionType;
-import com.starterkit.springboot.brs.model.bus.*;
-import com.starterkit.springboot.brs.model.user.User;
-import com.starterkit.springboot.brs.repository.bus.*;
-import com.starterkit.springboot.brs.repository.user.UserRepository;
-import com.starterkit.springboot.brs.util.RandomStringUtil;
+import static in.arakaki.hawk.exception.EntityType.AGENCY;
+import static in.arakaki.hawk.exception.EntityType.BUS;
+import static in.arakaki.hawk.exception.EntityType.STOP;
+import static in.arakaki.hawk.exception.EntityType.TRIP;
+import static in.arakaki.hawk.exception.EntityType.USER;
+import static in.arakaki.hawk.exception.ExceptionType.DUPLICATE_ENTITY;
+import static in.arakaki.hawk.exception.ExceptionType.ENTITY_EXCEPTION;
+import static in.arakaki.hawk.exception.ExceptionType.ENTITY_NOT_FOUND;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+
+import com.starterkit.springboot.brs.dto.model.bus.AgencyDto;
+import com.starterkit.springboot.brs.dto.model.bus.StopDto;
+import com.starterkit.springboot.brs.dto.model.bus.TicketDto;
+import com.starterkit.springboot.brs.dto.model.bus.TripDto;
+import com.starterkit.springboot.brs.dto.model.bus.TripScheduleDto;
+import com.starterkit.springboot.brs.dto.model.bus.TweetsDto;
+import com.starterkit.springboot.brs.model.bus.Agency;
+import com.starterkit.springboot.brs.model.bus.Bus;
+import com.starterkit.springboot.brs.model.bus.Stop;
+import com.starterkit.springboot.brs.model.bus.Ticket;
+import com.starterkit.springboot.brs.model.bus.Trip;
+import com.starterkit.springboot.brs.model.bus.TripSchedule;
+import com.starterkit.springboot.brs.repository.bus.AgencyRepository;
+import com.starterkit.springboot.brs.repository.bus.BusRepository;
+import com.starterkit.springboot.brs.repository.bus.StopRepository;
+import com.starterkit.springboot.brs.repository.bus.TicketRepository;
+import com.starterkit.springboot.brs.repository.bus.TripRepository;
+import com.starterkit.springboot.brs.repository.bus.TripScheduleRepository;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static com.starterkit.springboot.brs.exception.EntityType.*;
-import static com.starterkit.springboot.brs.exception.ExceptionType.*;
+import in.arakaki.hawk.dto.mapper.TicketMapper;
+import in.arakaki.hawk.dto.mapper.TripMapper;
+import in.arakaki.hawk.dto.mapper.TripScheduleMapper;
+import in.arakaki.hawk.dto.model.user.UserDto;
+import in.arakaki.hawk.exception.EntityType;
+import in.arakaki.hawk.exception.ExceptionType;
+import in.arakaki.hawk.exception.HawkException;
+import in.arakaki.hawk.model.user.User;
+import in.arakaki.hawk.repository.user.UserRepository;
+import in.arakaki.hawk.util.RandomStringUtil;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Component
 public class BusReservationServiceImpl implements BusReservationService {
@@ -129,21 +158,21 @@ public class BusReservationServiceImpl implements BusReservationService {
      * Updates the agency with given Bus information
      *
      * @param agencyDto
-     * @param busDto
+     * @param TweetsDto
      * @return
      */
     @Transactional
-    public AgencyDto updateAgency(AgencyDto agencyDto, BusDto busDto) {
+    public AgencyDto updateAgency(AgencyDto agencyDto, TweetsDto TweetsDto) {
         Agency agency = getAgency(agencyDto.getCode());
         if (agency != null) {
-            if (busDto != null) {
-                Optional<Bus> bus = Optional.ofNullable(busRepository.findByCodeAndAgency(busDto.getCode(), agency));
+            if (TweetsDto != null) {
+                Optional<Bus> bus = Optional.ofNullable(busRepository.findByCodeAndAgency(TweetsDto.getCode(), agency));
                 if (!bus.isPresent()) {
                     Bus busModel = new Bus()
                             .setAgency(agency)
-                            .setCode(busDto.getCode())
-                            .setCapacity(busDto.getCapacity())
-                            .setMake(busDto.getMake());
+                            .setCode(TweetsDto.getCode())
+                            .setCapacity(TweetsDto.getCapacity())
+                            .setMake(TweetsDto.getMake());
                     busRepository.save(busModel);
                     if (agency.getBuses() == null) {
                         agency.setBuses(new HashSet<>());
@@ -151,7 +180,7 @@ public class BusReservationServiceImpl implements BusReservationService {
                     agency.getBuses().add(busModel);
                     return modelMapper.map(agencyRepository.save(agency), AgencyDto.class);
                 }
-                throw exceptionWithId(BUS, DUPLICATE_ENTITY, "2", busDto.getCode(), agencyDto.getCode());
+                throw exceptionWithId(BUS, DUPLICATE_ENTITY, "2", TweetsDto.getCode(), agencyDto.getCode());
             } else {
                 //update agency details case
                 agency.setName(agencyDto.getName())
@@ -427,7 +456,7 @@ public class BusReservationServiceImpl implements BusReservationService {
      * @return
      */
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {
-        return BRSException.throwException(entityType, exceptionType, args);
+        return HawkException.throwException(entityType, exceptionType, args);
     }
 
     /**
@@ -439,6 +468,6 @@ public class BusReservationServiceImpl implements BusReservationService {
      * @return
      */
     private RuntimeException exceptionWithId(EntityType entityType, ExceptionType exceptionType, String id, String... args) {
-        return BRSException.throwExceptionWithId(entityType, exceptionType, id, args);
+        return HawkException.throwExceptionWithId(entityType, exceptionType, id, args);
     }
 }

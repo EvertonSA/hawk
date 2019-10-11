@@ -1,10 +1,10 @@
-package com.starterkit.springboot.brs.repository.user;
+package in.arakaki.hawk.repository.user;
 
-import com.starterkit.springboot.brs.model.user.Role;
+import in.arakaki.hawk.model.user.Role;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public interface RoleRepository extends MongoRepository<Role, String> {
 

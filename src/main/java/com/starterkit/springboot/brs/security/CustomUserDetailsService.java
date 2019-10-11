@@ -1,8 +1,8 @@
-package com.starterkit.springboot.brs.security;
+package in.arakaki.hawk.security;
 
-import com.starterkit.springboot.brs.dto.model.user.RoleDto;
-import com.starterkit.springboot.brs.dto.model.user.UserDto;
-import com.starterkit.springboot.brs.service.UserService;
+import in.arakaki.hawk.dto.model.user.RoleDto;
+import in.arakaki.hawk.dto.model.user.UserDto;
+import in.arakaki.hawk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

@@ -1,13 +1,13 @@
-package com.starterkit.springboot.brs.service;
+package in.arakaki.hawk.service;
 
-import com.starterkit.springboot.brs.dto.model.bus.*;
-import com.starterkit.springboot.brs.dto.model.user.UserDto;
+import in.arakaki.hawk.dto.model.bus.*;
+import in.arakaki.hawk.dto.model.user.UserDto;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public interface BusReservationService {
 
@@ -21,7 +21,7 @@ public interface BusReservationService {
 
     AgencyDto addAgency(AgencyDto agencyDto);
 
-    AgencyDto updateAgency(AgencyDto agencyDto, BusDto busDto);
+    AgencyDto updateAgency(AgencyDto agencyDto, TweetsDto TweetsDto);
 
     //Trip related methods
     TripDto getTripById(String tripID);

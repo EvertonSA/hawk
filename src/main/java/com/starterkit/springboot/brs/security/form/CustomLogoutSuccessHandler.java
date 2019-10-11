@@ -1,4 +1,4 @@
-package com.starterkit.springboot.brs.security.form;
+package in.arakaki.hawk.security.form;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by Arpit Khandelwal.
+ * Created by Everton Arakaki.
  */
 public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler
         implements LogoutSuccessHandler {
