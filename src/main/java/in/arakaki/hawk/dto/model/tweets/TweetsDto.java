@@ -28,7 +28,7 @@ public class TweetsDto {
     @Id
     private String id;
 
-    private Set hashtag;
+    private Set<?> hashtag;
 
     private String userid;
 
