@@ -46,7 +46,7 @@ public class Hawk {
     }
 
     
-    @GetMapping("/tweets/hashtag/")
+    @GetMapping("/tweets/hashtag/{name}")
     public Response<?> getAllTweetsByHashtag(@RequestParam(value="name") {
         return Response
                 .ok()
