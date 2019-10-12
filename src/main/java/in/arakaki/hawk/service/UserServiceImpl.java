@@ -1,8 +1,5 @@
 package in.arakaki.hawk.service;
 
-import in.arakaki.hawk.dto.mapper.UserMapper;
-import in.arakaki.hawk.dto.model.user.UserDto;
-import in.arakaki.hawk.model.user.User;
 import in.arakaki.hawk.repository.user.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +20,10 @@ import static in.arakaki.hawk.exception.ExceptionType.ENTITY_NOT_FOUND;
 @Component
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
+	@Autowired
+	private ModelMapper modelMapper;
 
 }

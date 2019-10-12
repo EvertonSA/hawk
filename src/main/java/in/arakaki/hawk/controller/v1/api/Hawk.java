@@ -22,7 +22,7 @@ public class Hawk {
     private TweetsService TweetsService;
 
     @Autowired
-    //private UserService userService;
+    private UserService userService;
 
     @GetMapping("/tweets")
     public Response<?> getAllTweets() {
@@ -30,7 +30,6 @@ public class Hawk {
                 .ok()
                 .setPayload(TweetsService.getAllTweets());
     }
-
     
     @GetMapping("/tweets/hashtag/{hashtagname}")
     public Response<?> getAllTweetsByHashtag(@PathVariable(value="hashtagname") String hashtag )  {
