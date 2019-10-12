@@ -6,7 +6,7 @@ import in.arakaki.hawk.model.bus.Ticket;
 /**
  * Created by Everton Arakaki.
  */
-public class TicketMapper {
+public class TweetsMapper {
     public static TicketDto toTicketDto(Ticket ticket) {
         return new TicketDto()
                 .setId(ticket.getId())
