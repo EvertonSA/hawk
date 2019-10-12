@@ -2,6 +2,7 @@ package in.arakaki.hawk.controller.v1.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,11 +32,11 @@ public class Hawk {
     }
 
     
-    @GetMapping("/tweets/hashtag/")
-    public Response<?> getAllTweetsByHashtag() {
+    @GetMapping("/tweets/hashtag/{hashtagname}")
+    public Response<?> getAllTweetsByHashtag(@PathVariable(value="hashtagname") String hashtag )  {
         return Response
                 .ok()
-                .setPayload(TweetsService.getAllTweetsByHashtag());
+                .setPayload(TweetsService.getAllTweetsByHashtag(hashtag));
     }
 
 }

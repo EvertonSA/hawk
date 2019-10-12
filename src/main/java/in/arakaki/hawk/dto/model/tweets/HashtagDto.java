@@ -1,12 +1,9 @@
 package in.arakaki.hawk.dto.model.tweets;
 
-import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-
-import in.arakaki.hawk.model.tweets.Hashtag;
 
 import org.springframework.data.annotation.Id;
 
@@ -26,12 +23,12 @@ import lombok.experimental.Accessors;
 @ToString
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TweetsDto {
+public class HashtagDto {
 
     @Id
     private String id;
 
-    private List<String> hashtag;
+    private String hashtag;
 
     private String userid;
 

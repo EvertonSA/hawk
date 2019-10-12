@@ -1,22 +1,19 @@
 package in.arakaki.hawk.dto.mapper;
 
-import in.arakaki.hawk.dto.model.bus.TicketDto;
-import in.arakaki.hawk.model.bus.Ticket;
+import java.util.stream.Collectors;
+
+import in.arakaki.hawk.dto.model.tweets.*;
+
+import in.arakaki.hawk.model.tweets.*;
 
 /**
  * Created by Everton Arakaki.
  */
 public class TweetsMapper {
-    public static TicketDto toTicketDto(Ticket ticket) {
-        return new TicketDto()
-                .setId(ticket.getId())
-                .setBusCode(ticket.getTripSchedule().getTripDetail().getBus().getCode())
-                .setSeatNumber(ticket.getSeatNumber())
-                .setSourceStop(ticket.getTripSchedule().getTripDetail().getSourceStop().getName())
-                .setDestinationStop(ticket.getTripSchedule().getTripDetail().getDestStop().getName())
-                .setCancellable(false)
-                .setJourneyDate(ticket.getJourneyDate())
-                .setPassengerName(ticket.getPassenger().getFullName())
-                .setPassengerMobileNumber(ticket.getPassenger().getMobileNumber());
+    public static TweetsDto toTweetsDto(Tweets tweets) {
+    	return new TweetsDto()
+        		.setId(tweets.getId())
+        		.setUserid(tweets.getUser().getName())
+        		.setHashtag(tweets.getHashtag().stream().map( u -> u.getValue()).collect(Collectors.toList()));
     }
 }

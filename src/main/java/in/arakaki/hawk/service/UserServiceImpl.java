@@ -2,13 +2,7 @@ package in.arakaki.hawk.service;
 
 import in.arakaki.hawk.dto.mapper.UserMapper;
 import in.arakaki.hawk.dto.model.user.UserDto;
-import in.arakaki.hawk.exception.HawkException;
-import in.arakaki.hawk.exception.EntityType;
-import in.arakaki.hawk.exception.ExceptionType;
-import in.arakaki.hawk.model.user.Role;
 import in.arakaki.hawk.model.user.User;
-import in.arakaki.hawk.model.user.UserRoles;
-import in.arakaki.hawk.repository.user.RoleRepository;
 import in.arakaki.hawk.repository.user.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,42 +22,12 @@ import static in.arakaki.hawk.exception.ExceptionType.ENTITY_NOT_FOUND;
  */
 @Component
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private BusReservationService busReservationService;
-
-    @Autowired
     private ModelMapper modelMapper;
-
-    @Override
-    public UserDto signup(UserDto userDto) {
-        Role userRole;
-        User user = userRepository.findByEmail(userDto.getEmail());
-        if (user == null) {
-            if (userDto.isAdmin()) {
-                userRole = roleRepository.findByRole(UserRoles.ADMIN.name());
-            } else {
-                userRole = roleRepository.findByRole(UserRoles.PASSENGER.name());
-            }
-            user = new User()
-                    .setEmail(userDto.getEmail())
-                    .setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()))
-                    .setRoles(new HashSet<>(Arrays.asList(userRole)))
-                    .setFirstName(userDto.getFirstName())
-                    .setLastName(userDto.getLastName())
-                    .setMobileNumber(userDto.getMobileNumber());
-            return UserMapper.toUserDto(userRepository.save(user));
-        }
-        throw exception(USER, DUPLICATE_ENTITY, userDto.getEmail());
-    }
 
     /**
      * Search an existing user
@@ -77,43 +41,6 @@ public class UserServiceImpl implements UserService {
             return modelMapper.map(user.get(), UserDto.class);
         }
         throw exception(USER, ENTITY_NOT_FOUND, email);
-    }
-
-    /**
-     * Update User Profile
-     *
-     * @param userDto
-     * @return
-     */
-    @Override
-    public UserDto updateProfile(UserDto userDto) {
-        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(userDto.getEmail()));
-        if (user.isPresent()) {
-            User userModel = user.get();
-            userModel.setFirstName(userDto.getFirstName())
-                    .setLastName(userDto.getLastName())
-                    .setMobileNumber(userDto.getMobileNumber());
-            return UserMapper.toUserDto(userRepository.save(userModel));
-        }
-        throw exception(USER, ENTITY_NOT_FOUND, userDto.getEmail());
-    }
-
-    /**
-     * Change Password
-     *
-     * @param userDto
-     * @param newPassword
-     * @return
-     */
-    @Override
-    public UserDto changePassword(UserDto userDto, String newPassword) {
-        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(userDto.getEmail()));
-        if (user.isPresent()) {
-            User userModel = user.get();
-            userModel.setPassword(bCryptPasswordEncoder.encode(newPassword));
-            return UserMapper.toUserDto(userRepository.save(userModel));
-        }
-        throw exception(USER, ENTITY_NOT_FOUND, userDto.getEmail());
     }
 
     /**

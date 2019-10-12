@@ -1,5 +1,6 @@
 package in.arakaki.hawk.model.tweets;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -24,11 +25,10 @@ public class Tweets {
 
     @Id
     private String id;
-
-    @DBRef
+    
     private User user;
 
-    private Set<String> hashtag;
+    private List<Hashtag> hashtag;
 
     private String id_str;
 
