@@ -22,7 +22,7 @@ public class Hawk {
     private TweetsService TweetsService;
 
     @Autowired
-    private UserService userService;
+    //private UserService userService;
 
     @GetMapping("/tweets")
     public Response<?> getAllTweets() {
