@@ -1,6 +1,6 @@
 db/data
 target/
-
+sre-itau-test-firestore-dev.json
 .settings
 .vscode
 .classpath
