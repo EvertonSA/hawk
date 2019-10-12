@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class UserMapper {
 
 	public static UserDto toUserDto(User user) {
-        return new UserDto();
+        return new UserDto().setId(user.getId()).setLang(user.getLang()).setLocation(user.getLocation()).setName(user.getName());
     }
 
 }
